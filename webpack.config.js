@@ -9,6 +9,8 @@ var commonsPlugin =
 module.exports = {
   entry: {
     'index': ["./src/index.tsx"],
+    // 'vendor' : ['react', 'react-dom'],
+    
   },
   output: { 
     path: __dirname + "/dist",
@@ -20,7 +22,11 @@ module.exports = {
   devtool: "source-map",
   resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", ".js", ".json"]
+        extensions: [".ts", ".tsx", ".js", ".json"],
+        alias:{
+          // utils: path.join(__dirname, '/src/js/common/utils'),
+          
+        }
     },
 
   module: {
