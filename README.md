@@ -33,8 +33,7 @@ import * as Styles from './sty.css';
 
 without namedExport, ```typings-for-css-modules-loader``` generates wrong *.d.ts file which has interface.
 
-- 
-[GitHub \- Jimdo/typings\-for\-css\-modules\-loader: Drop\-in replacement for css\-loader to generate typings for your CSS\-Modules on the fly in webpack](https://github.com/Jimdo/typings-for-css-modules-loader#namedexport-option)
+- [GitHub \- Jimdo/typings\-for\-css\-modules\-loader: Drop\-in replacement for css\-loader to generate typings for your CSS\-Modules on the fly in webpack](https://github.com/Jimdo/typings-for-css-modules-loader#namedexport-option)
 
 ```
  module: {
