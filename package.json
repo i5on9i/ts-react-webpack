@@ -29,6 +29,9 @@
   },
   "homepage": "https://github.com/i5on9i/ts-react-webpack#readme",
   "devDependencies": {
+    "@types/react": "^15.0.21",
+    "@types/react-dom": "^0.14.23",
+    "@types/react-router-dom": "^4.0.4",
     "awesome-typescript-loader": "^3.1.2",
     "css-loader": "^0.28.4",
     "enzyme": "^2.8.2",
@@ -40,12 +43,12 @@
     "ts-jest": "^20.0.5",
     "typescript": "^2.2.2",
     "typings-for-css-modules-loader": "^1.5.0",
-    "webpack": "^2.4.1",
-    "@types/react": "^15.0.21",
-    "@types/react-dom": "^0.14.23"
+    "webpack": "^2.4.1"
+    
   },
   "dependencies": {
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1"
   }
 }
