@@ -1,9 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-var buildPath = 'build/'
-var commonsPlugin =
-  new webpack.optimize.CommonsChunkPlugin('common');
+var buildPath = 'build/';
 
 
 module.exports = {
@@ -31,13 +30,32 @@ module.exports = {
 
   module: {
     rules: [
+      { 
+        test: /\.css$/,
+        use:[
+          {
+            loader: 'style-loader'
+          },
+          {
+            // loader: 'css-loader',
+            loader: 'typings-for-css-modules-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+              namedExport: true,
+              // camelCase: true,
+            }
+          }
+        ],
+      },
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+      { test: /\.tsx?$/, 
+        use: "awesome-typescript-loader",
+      },
 
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
-    ],
-    loaders: [
+      { enforce: "pre", test: /\.js$/, use: "source-map-loader" },
       {
         //tell webpack to use babel-loader for all *.jsx files
         test: /.jsx?$/,
@@ -46,8 +64,8 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
-      }
-    ]
+      },
+    ],
   },
   // When importing a module whose path matches one of the following, just
   // assume a corresponding global variable exists and use that instead.
@@ -57,5 +75,14 @@ module.exports = {
       "react": "React",
       "react-dom": "ReactDOM"
   },
-  plugins: [commonsPlugin]
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin('common'),
+    // new ExtractTextPlugin("styles.css"),
+
+    // As the loader generates typing files, it is wise to tell webpack
+    // to ignore them. It helps rebuild faster
+    new webpack.WatchIgnorePlugin([
+      /css\.d\.ts$/
+    ]),
+  ]
 };
