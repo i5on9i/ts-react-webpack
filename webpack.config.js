@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 var buildPath = 'build/'
 var commonsPlugin =
-  new webpack.optimize.CommonsChunkPlugin(buildPath + 'common.js');
+  new webpack.optimize.CommonsChunkPlugin('common');
 
 
 module.exports = {
